@@ -1,5 +1,5 @@
 //
-//  ViewController.h
+//  AddReceiptViewController.h
 //  Receipts++
 //
 //  Created by Alex Lee on 2017-06-21.
@@ -7,9 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <ChameleonFramework/Chameleon.h>
-@interface ViewController : UIViewController
 
+@interface AddReceiptViewController : UIViewController
 
 @end
-

@@ -8,7 +8,7 @@
 
 #import "AddReceiptViewController.h"
 
-@interface AddReceiptViewController ()
+@interface AddReceiptViewController () <UITableViewDelegate,UITableViewDataSource>
 
 @property (weak, nonatomic) IBOutlet UIView *headerBackgroundView;
 
@@ -29,7 +29,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-
+    self.categoryTableView.delegate = self;
+    self.categoryTableView.dataSource = self;
+    self.categoryTableView.scrollEnabled = NO;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -47,7 +49,34 @@
 }
 */
 - (IBAction)cancelAdd:(UIButton *)sender {
+
     [self dismissViewControllerAnimated:YES completion:nil];
+    
+}
+
+- (IBAction)confirmAdd:(UIButton *)sender {
+    
+    NSEntityDescription *entityDescription = [NSEntityDescription entityForName:@"Receipt" inManagedObjectContext:self.managedObjectContext];
+    NSManagedObject *managedObject = [[NSManagedObject alloc] initWithEntity:entityDescription insertIntoManagedObjectContext:self.managedObjectContext];
+    [managedObject setValue:[NSNumber numberWithFloat:[self.amountField.text floatValue]] forKey:@"amount"];
+    
+    [managedObject setValue:self.descriptionField.text forKey:@"note"];
+    
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    return 1;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return [self.tags count];
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"selectCategoryCell"];
+    cell.textLabel.text = [self.tags objectAtIndex:indexPath.row].tagName;
+    return cell;
 }
 
 @end

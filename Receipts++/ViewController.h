@@ -7,8 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "AppDelegate.h"
+#import "AddReceiptViewController.h"
+#import <CoreData/CoreData.h>
 
-@interface ViewController : UIViewController
+@interface ViewController : UIViewController <NSFetchedResultsControllerDelegate>
 
 
 @end

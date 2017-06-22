@@ -7,7 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import <CoreData/CoreData.h>
+#import "Receipts__+CoreDataModel.h"
 @interface AddReceiptViewController : UIViewController
+
+@property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;
+@property (strong, nonatomic) NSArray<Tag *> *tags;
 
 @end

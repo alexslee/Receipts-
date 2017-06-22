@@ -3,14 +3,15 @@
     <entity name="Receipt" representedClassName="Receipt" syncable="YES" codeGenerationType="class">
         <attribute name="amount" optional="YES" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="note" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="tags" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Tag" inverseName="receipts" inverseEntity="Tag" syncable="YES"/>
+        <attribute name="timeStamp" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <relationship name="tags" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Tag" inverseName="receipts" inverseEntity="Tag" syncable="YES"/>
     </entity>
     <entity name="Tag" representedClassName="Tag" syncable="YES" codeGenerationType="class">
         <attribute name="tagName" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="receipts" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Receipt" inverseName="tags" inverseEntity="Receipt" syncable="YES"/>
+        <relationship name="receipts" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Receipt" inverseName="tags" inverseEntity="Receipt" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Receipt" positionX="-63" positionY="-18" width="128" height="90"/>
+        <element name="Receipt" positionX="-63" positionY="-18" width="128" height="105"/>
         <element name="Tag" positionX="-54" positionY="9" width="128" height="75"/>
     </elements>
 </model>

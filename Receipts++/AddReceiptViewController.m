@@ -22,6 +22,8 @@
 
 @property (weak, nonatomic) IBOutlet UIDatePicker *datePicker;
 
+@property (strong, nonatomic) NSMutableSet *checkedTags;
+
 @end
 
 @implementation AddReceiptViewController
@@ -32,6 +34,7 @@
     self.categoryTableView.delegate = self;
     self.categoryTableView.dataSource = self;
     self.categoryTableView.scrollEnabled = NO;
+    self.checkedTags = [[NSMutableSet alloc] init];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -56,11 +59,28 @@
 
 - (IBAction)confirmAdd:(UIButton *)sender {
     
-    NSEntityDescription *entityDescription = [NSEntityDescription entityForName:@"Receipt" inManagedObjectContext:self.managedObjectContext];
-    NSManagedObject *managedObject = [[NSManagedObject alloc] initWithEntity:entityDescription insertIntoManagedObjectContext:self.managedObjectContext];
-    [managedObject setValue:[NSNumber numberWithFloat:[self.amountField.text floatValue]] forKey:@"amount"];
+//    NSEntityDescription *entityDescription = [NSEntityDescription entityForName:@"Receipt" inManagedObjectContext:self.managedObjectContext];
+//
+//    NSManagedObject *managedObject = [[NSManagedObject alloc] initWithEntity:entityDescription insertIntoManagedObjectContext:self.managedObjectContext];
+//    [managedObject setValue:[NSNumber numberWithFloat:[self.amountField.text floatValue]] forKey:@"amount"];
+//    
+//    [managedObject setValue:self.descriptionField.text forKey:@"note"];
+
+    Receipt *receipt = [NSEntityDescription insertNewObjectForEntityForName:@"Receipt" inManagedObjectContext:self.managedObjectContext];
     
-    [managedObject setValue:self.descriptionField.text forKey:@"note"];
+    [receipt setValue:[NSNumber numberWithFloat:[self.amountField.text floatValue]] forKey:@"amount"];
+    
+    [receipt setValue:self.descriptionField.text forKey:@"note"];
+    
+    //NSSet *tagSet = [NSSet setWithArray:self.checkedTags];
+    [receipt setTags:self.checkedTags];
+    for (Tag *tag in self.checkedTags) {
+        NSSet *existing = tag.receipts;
+        NSMutableSet *replacement = [NSMutableSet setWithSet:existing];
+        [replacement addObject:receipt];
+        tag.receipts = replacement;
+    }
+    [receipt setTimeStamp:self.datePicker.date];
     
     [self dismissViewControllerAnimated:YES completion:nil];
 }
@@ -77,6 +97,19 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"selectCategoryCell"];
     cell.textLabel.text = [self.tags objectAtIndex:indexPath.row].tagName;
     return cell;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+    cell.contentView.backgroundColor = [UIColor whiteColor];
+    UITableViewCellAccessoryType accessory = cell.accessoryType;
+    cell.accessoryType = (accessory == UITableViewCellAccessoryCheckmark) ? UITableViewCellAccessoryNone : UITableViewCellAccessoryCheckmark;
+//    cell.accessoryView.backgroundColor = [UIColor whiteColor];
+    if (cell.accessoryType == UITableViewCellAccessoryNone) {
+        [self.checkedTags removeObject:[self.tags objectAtIndex:indexPath.row]];
+    } else {
+        [self.checkedTags addObject:[self.tags objectAtIndex:indexPath.row]];
+    }
 }
 
 @end

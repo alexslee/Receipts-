@@ -17,7 +17,7 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
-    self.managedObjectContext = self.persistentContainer.viewContext;
+    //self.managedObjectContext = self.persistentContainer.viewContext;
     return YES;
 }
 
@@ -31,6 +31,7 @@
 - (void)applicationDidEnterBackground:(UIApplication *)application {
     // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
     // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
+    [self saveContext];
 }
 
 
@@ -81,6 +82,20 @@
     }
     
     return _persistentContainer;
+}
+
+- (NSManagedObjectContext *)managedObjectContext {
+    // Returns the managed object context for the application (which is already bound to the persistent store coordinator for the application.)
+    if (_managedObjectContext != nil) {
+        return _managedObjectContext;
+    }
+    
+    NSPersistentContainer *container = [self persistentContainer];
+    if (!container) {
+        return nil;
+    }
+    _managedObjectContext = container.viewContext;
+    return _managedObjectContext;
 }
 
 #pragma mark - Core Data Saving support

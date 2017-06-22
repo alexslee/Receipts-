@@ -31,7 +31,7 @@
 }
 
 - (void)viewWillAppear:(BOOL)animated {
-    [self fetchTags];
+    [self grabTags];
     if ([self.tags count] == 0) {
         [self createTags];
     }
@@ -55,47 +55,34 @@
     }
 }
 
--(void)fetchTags {
-    NSError *error;
+-(void)grabTags {
+    NSError *error = nil;
     
-    // Fetch object
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
-    NSEntityDescription *entity = [NSEntityDescription entityForName:@"Tag"
-                                              inManagedObjectContext:self.managedObjectContext];
-    [fetchRequest setEntity:entity];
+    NSSortDescriptor *sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"tagName" ascending:YES];
+    fetchRequest.sortDescriptors = @[sortDescriptor];
+    
+    [fetchRequest setEntity: [NSEntityDescription entityForName:@"Tag" inManagedObjectContext:self.managedObjectContext]];
     
     self.tags = [self.managedObjectContext executeFetchRequest:fetchRequest error:&error];
     
-    if (self.tags == nil) {
-        // Handle the error.
-    }
 }
 
 -(void)createTags {
-    NSError *error;
-    
-    // Create new object
-    Tag *firstTag = [NSEntityDescription
-                 insertNewObjectForEntityForName:@"Tag"
-                 inManagedObjectContext:self.managedObjectContext];
+    NSError *error = nil;
+
+    Tag *firstTag = [NSEntityDescription insertNewObjectForEntityForName:@"Tag" inManagedObjectContext:self.managedObjectContext];
     firstTag.tagName = @"Business";
     
-    Tag *secondTag = [NSEntityDescription
-                 insertNewObjectForEntityForName:@"Tag"
-                 inManagedObjectContext:self.managedObjectContext];
+    Tag *secondTag = [NSEntityDescription insertNewObjectForEntityForName:@"Tag" inManagedObjectContext:self.managedObjectContext];
     secondTag.tagName = @"Family";
     
-    Tag *thirdTag = [NSEntityDescription
-                 insertNewObjectForEntityForName:@"Tag"
-                 inManagedObjectContext:self.managedObjectContext];
+    Tag *thirdTag = [NSEntityDescription insertNewObjectForEntityForName:@"Tag" inManagedObjectContext:self.managedObjectContext];
     thirdTag.tagName = @"Personal";
     
-    // Save object
-    if (![self.managedObjectContext save:&error]) {
-        // Handle the error.
-    }
-    
-    [self fetchTags];
+    [self.managedObjectContext save:&error];
+    //now that we have them created, grab them for use in the program
+    [self grabTags];
 }
 
 

@@ -192,6 +192,7 @@
                             </stackView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="Xyb-jh-T88" firstAttribute="leading" secondItem="36K-xI-zn3" secondAttribute="leadingMargin" id="6lC-1a-PjY"/>
                             <constraint firstAttribute="trailing" secondItem="anv-b0-ov3" secondAttribute="trailing" id="HbB-pp-LdY"/>
@@ -211,6 +212,9 @@
                             <constraint firstItem="anv-b0-ov3" firstAttribute="top" secondItem="Xyb-jh-T88" secondAttribute="bottom" constant="40" id="pDR-77-UQC"/>
                             <constraint firstAttribute="trailingMargin" secondItem="ime-iJ-BXw" secondAttribute="trailing" id="tZd-ow-I2Z"/>
                         </constraints>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="td0-OY-xdz" appends="YES" id="9nH-mC-eZo"/>
+                        </connections>
                     </view>
                     <connections>
                         <outlet property="amountField" destination="1mt-W3-shi" id="mhe-xD-Nsi"/>
@@ -222,6 +226,11 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ItI-C4-PMR" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="td0-OY-xdz">
+                    <connections>
+                        <action selector="tapDismissKeyboard:" destination="Vvp-eE-Ddv" id="oZn-PY-ONL"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="1015.2" y="138.0809595202399"/>
         </scene>

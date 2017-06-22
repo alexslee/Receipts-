@@ -51,6 +51,11 @@
     // Pass the selected object to the new view controller.
 }
 */
+- (IBAction)tapDismissKeyboard:(UITapGestureRecognizer *)sender {
+    [self.amountField resignFirstResponder];
+    [self.descriptionField resignFirstResponder];
+}
+
 - (IBAction)cancelAdd:(UIButton *)sender {
 
     [self dismissViewControllerAnimated:YES completion:nil];
@@ -114,6 +119,10 @@
     } else {
         [self.checkedTags addObject:[self.tags objectAtIndex:indexPath.row]];
     }
+}
+
+- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
+    return NO;
 }
 
 @end

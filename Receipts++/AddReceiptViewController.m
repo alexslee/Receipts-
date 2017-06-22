@@ -7,7 +7,7 @@
 //
 
 #import "AddReceiptViewController.h"
-#import <ChameleonFramework/Chameleon.h>
+
 @interface AddReceiptViewController ()
 
 @property (weak, nonatomic) IBOutlet UIView *headerBackgroundView;
@@ -29,8 +29,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    self.headerLabel.textColor = [UIColor whiteColor];
-    self.headerBackgroundView.backgroundColor = FlatMint;
+
 }
 
 - (void)didReceiveMemoryWarning {

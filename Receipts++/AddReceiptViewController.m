@@ -93,6 +93,10 @@
     return [self.tags count];
 }
 
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
+    return (@"Category");
+}
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"selectCategoryCell"];
     cell.textLabel.text = [self.tags objectAtIndex:indexPath.row].tagName;

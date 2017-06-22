@@ -105,15 +105,15 @@
                                     <constraint firstItem="ren-Te-hDC" firstAttribute="centerX" secondItem="Mrc-um-T67" secondAttribute="centerX" id="ZfS-iV-ldh"/>
                                 </constraints>
                             </view>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="aX7-OV-SVT">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="35" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="aX7-OV-SVT">
                                 <rect key="frame" x="249" y="78" width="145" height="140"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="selectCategoryCell" id="lB7-UT-YqX">
-                                        <rect key="frame" x="0.0" y="28" width="145" height="44"/>
+                                        <rect key="frame" x="0.0" y="28" width="145" height="35"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="lB7-UT-YqX" id="FpZ-kB-4sQ">
-                                            <rect key="frame" x="0.0" y="0.0" width="145" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="145" height="34.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                     </tableViewCell>

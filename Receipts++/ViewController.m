@@ -36,7 +36,7 @@
     if ([self.tags count] == 0) {
         [self createTags];
     }
-    [self createData];
+    [self grabReceipts];
     [self.tableView reloadData];
 }
 
@@ -119,13 +119,11 @@
 
 #pragma mark - receipts
 
--(void)createData {
+-(void)grabReceipts {
     NSMutableArray *results = [[NSMutableArray alloc]init];
-    
     for (Tag *tag in self.tags) {
         [results addObject:[tag.receipts allObjects]];
     }
-    
     self.receipts = [results copy];
 }
 
@@ -151,6 +149,17 @@
     cell.textLabel.text = receipt.note;
     //[self configureCell:cell withReceipt:receipt];
     return cell;
+}
+
+- (void)tableView:(UITableView *)tableView willDisplayHeaderView:(UIView *)view forSection:(NSInteger)section {
+    view.tintColor = [UIColor colorWithRed:52.0/255.0 green:188.0/255.0 blue:152.0/255.0 alpha:1.0];
+    // Text Color
+    UITableViewHeaderFooterView *header = (UITableViewHeaderFooterView *)view;
+    [header.textLabel setTextColor:[UIColor whiteColor]];
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
+    return 20.0;
 }
 
 //#pragma mark - Fetched results controller

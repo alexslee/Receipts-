@@ -10,6 +10,7 @@
 #import "AppDelegate.h"
 #import "AddReceiptViewController.h"
 #import <CoreData/CoreData.h>
+#import "ReceiptTableViewCell.h"
 
 @interface ViewController : UIViewController <NSFetchedResultsControllerDelegate>
 

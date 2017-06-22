@@ -27,13 +27,37 @@
                                 <rect key="frame" x="0.0" y="20" width="414" height="641"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" id="cuU-u5-KVY">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" id="cuU-u5-KVY" customClass="ReceiptTableViewCell">
                                         <rect key="frame" x="0.0" y="28" width="414" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="cuU-u5-KVY" id="sbn-Qb-9B4">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Receipt note" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="SRk-Md-hMb">
+                                                    <rect key="frame" x="8" y="10.999999999999998" width="91.666666666666671" height="19.333333333333329"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$$$$" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="Lkg-ny-P0N">
+                                                    <rect key="frame" x="365.66666666666674" y="10.999999999999998" width="40.333333333333314" height="19.333333333333329"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="Lkg-ny-P0N" firstAttribute="centerY" secondItem="SRk-Md-hMb" secondAttribute="centerY" id="4fh-g9-k3b"/>
+                                                <constraint firstItem="SRk-Md-hMb" firstAttribute="top" secondItem="sbn-Qb-9B4" secondAttribute="topMargin" constant="3" id="HEg-s6-aFk"/>
+                                                <constraint firstItem="SRk-Md-hMb" firstAttribute="leading" secondItem="sbn-Qb-9B4" secondAttribute="leadingMargin" id="Vdt-MW-Jha"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="Lkg-ny-P0N" secondAttribute="trailing" id="dVI-QJ-Kut"/>
+                                            </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="amountLabel" destination="Lkg-ny-P0N" id="IIv-Ex-TTd"/>
+                                            <outlet property="noteLabel" destination="SRk-Md-hMb" id="Hwf-Ht-3qw"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
@@ -126,7 +150,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="207" height="30"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
+                                        <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
                                     </textField>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Description" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="SuA-mc-FYY">
                                         <rect key="frame" x="0.0" y="50" width="207" height="90"/>

@@ -144,10 +144,10 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
+    ReceiptTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
     Receipt *receipt = [[self.receipts objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];//[self.fetchedResultsController objectAtIndexPath:indexPath];
-    cell.textLabel.text = receipt.note;
-    //[self configureCell:cell withReceipt:receipt];
+    cell.amountLabel.text = [NSString stringWithFormat:@"%.2lf",receipt.amount];
+    cell.noteLabel.text = receipt.note;
     return cell;
 }
 

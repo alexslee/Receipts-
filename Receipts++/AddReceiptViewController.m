@@ -51,10 +51,18 @@
     // Pass the selected object to the new view controller.
 }
 */
-- (IBAction)tapDismissKeyboard:(UITapGestureRecognizer *)sender {
-    [self.amountField resignFirstResponder];
+
+-(void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
     [self.descriptionField resignFirstResponder];
+    [self.amountField resignFirstResponder];
 }
+
+//- (IBAction)tapDismissKeyboard:(UITapGestureRecognizer *)sender {
+//    if ([self.amountField canResignFirstResponder]||[self.descriptionField canResignFirstResponder]) {
+//        [self.amountField resignFirstResponder];
+//        [self.descriptionField resignFirstResponder];
+//    }
+//}
 
 - (IBAction)cancelAdd:(UIButton *)sender {
 
@@ -121,8 +129,8 @@
     }
 }
 
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
-    return NO;
-}
+//- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
+//    return NO;
+//}
 
 @end

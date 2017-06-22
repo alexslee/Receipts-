@@ -163,10 +163,6 @@
     return 20.0;
 }
 
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
-    return YES;
-}
-
 //#pragma mark - Fetched results controller
 //
 //- (NSFetchedResultsController<Receipt *> *)fetchedResultsController {

@@ -145,6 +145,24 @@
                                     <!--2017-06-22 06:24:48 +0000-->
                                 </date>
                             </datePicker>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="ime-iJ-BXw">
+                                <rect key="frame" x="20" y="514" width="374" height="30"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WKm-v9-oRP">
+                                        <rect key="frame" x="0.0" y="0.0" width="187" height="30"/>
+                                        <state key="normal" title="Cancel">
+                                            <color key="titleColor" red="0.85043728351593018" green="0.21816034615039825" blue="0.15920260548591614" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="cancelAdd:" destination="Vvp-eE-Ddv" eventType="touchUpInside" id="GqE-b1-E6m"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4fq-0u-95M">
+                                        <rect key="frame" x="187" y="0.0" width="187" height="30"/>
+                                        <state key="normal" title="Add Receipt"/>
+                                    </button>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -157,11 +175,14 @@
                             <constraint firstItem="Mrc-um-T67" firstAttribute="leading" secondItem="36K-xI-zn3" secondAttribute="leading" id="W8K-Uw-5BX"/>
                             <constraint firstItem="anv-b0-ov3" firstAttribute="leading" secondItem="36K-xI-zn3" secondAttribute="leading" id="X6k-kc-sCJ"/>
                             <constraint firstItem="aX7-OV-SVT" firstAttribute="width" secondItem="Mrc-um-T67" secondAttribute="width" multiplier="0.35" id="alU-dY-TKt"/>
+                            <constraint firstItem="ime-iJ-BXw" firstAttribute="top" secondItem="anv-b0-ov3" secondAttribute="bottom" constant="40" id="cvh-vn-0wC"/>
                             <constraint firstItem="aX7-OV-SVT" firstAttribute="height" secondItem="Xyb-jh-T88" secondAttribute="height" id="fB4-8O-Zm9"/>
                             <constraint firstItem="aX7-OV-SVT" firstAttribute="trailing" secondItem="36K-xI-zn3" secondAttribute="trailingMargin" id="fGw-rY-6Md"/>
+                            <constraint firstItem="ime-iJ-BXw" firstAttribute="leading" secondItem="36K-xI-zn3" secondAttribute="leadingMargin" id="fza-d8-7ua"/>
                             <constraint firstItem="aX7-OV-SVT" firstAttribute="top" secondItem="Mrc-um-T67" secondAttribute="bottom" constant="8" id="kio-tn-uXy"/>
                             <constraint firstItem="Mrc-um-T67" firstAttribute="top" secondItem="BEM-Ht-oTq" secondAttribute="bottom" id="l0J-Ze-5yK"/>
                             <constraint firstItem="anv-b0-ov3" firstAttribute="top" secondItem="Xyb-jh-T88" secondAttribute="bottom" constant="40" id="pDR-77-UQC"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="ime-iJ-BXw" secondAttribute="trailing" id="tZd-ow-I2Z"/>
                         </constraints>
                     </view>
                     <connections>
